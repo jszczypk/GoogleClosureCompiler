@@ -7,6 +7,7 @@ namespace JSzczypk\GoogleClosureCompiler;
 class Compiler
 {
 
+    public string $remoteCompilerUrl = 'https://jscompressor.treblereel.dev/compile';
     public string $compilerBinary = 'npx google-closure-compiler';
 
     public function __construct(
@@ -17,9 +18,8 @@ class Compiler
     {
     }
 
-    public function compile(string $javascript): string
+    public function remoteCompile(string $javascript): string
     {
-        //file_put_contents('compile_input.js', $javascript);
 
         $post = [
             'compilation_level' => $this->compilationLevel->value,
@@ -30,7 +30,7 @@ class Compiler
 
         $curl = curl_init();
         curl_setopt_array($curl, [
-            CURLOPT_URL => 'http://closure-compiler.appspot.com/compile',
+            CURLOPT_URL => $this->remoteCompilerUrl,
             CURLOPT_HEADER => false,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POST => true,
@@ -55,7 +55,7 @@ class Compiler
         return $result;
     }
 
-    public function localCompile(
+    public function compile(
         string $code,
         ?string $sourceMapFile = null,
     ): string {
