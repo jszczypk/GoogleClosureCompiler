@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+namespace JSzczypk\GoogleClosureCompiler;
+
+enum LanguageIn: string
+{
+    case ECMASCRIPT5 = 'ECMASCRIPT5';
+    case ECMASCRIPT5_STRICT = 'ECMASCRIPT5_STRICT';
+    case ECMASCRIPT6_TYPED = 'ECMASCRIPT6_TYPED';
+    case ECMASCRIPT_2015 = 'ECMASCRIPT_2015';
+    case ECMASCRIPT_2016 = 'ECMASCRIPT_2016';
+    case ECMASCRIPT_2017 = 'ECMASCRIPT_2017';
+    case ECMASCRIPT_2018 = 'ECMASCRIPT_2018';
+    case ECMASCRIPT_2019 = 'ECMASCRIPT_2019';
+    case ECMASCRIPT_2020 = 'ECMASCRIPT_2020';
+    case ECMASCRIPT_2021 = 'ECMASCRIPT_2021';
+    case STABLE = 'STABLE';
+    case ECMASCRIPT_NEXT = 'ECMASCRIPT_NEXT';
+}
