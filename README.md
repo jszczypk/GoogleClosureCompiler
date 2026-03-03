@@ -11,7 +11,7 @@ composer require jszczypk/google-closure-compiler
 ## Setup
 
 Requires PHP 8.1+ and the `curl` extension (for remote compilation).  
-For local compilation, you need Node.js and the `npx` binary available in your `PATH`.
+For local compilation, you need Node and npm package google-closure-compiler.
 
 ## Usage
 
@@ -25,11 +25,7 @@ $compiler = new Compiler(
 
 $yourJavaScriptCode = 'console.log("Hello World!");';
 
-// Remote compile using closure-compiler.appspot.com API
 $compiledCode = $compiler->compile($yourJavaScriptCode);
-
-// Local compile using npx
-$compiledCodeLocal = $compiler->localCompile($yourJavaScriptCode);
 ```
 
 ### Advanced Usage
@@ -48,11 +44,3 @@ $compiler = new Compiler(
     languageOut: LanguageOut::ECMASCRIPT5
 );
 ```
-
-## Publishing to Packagist
-
-1. Push this repository to GitHub (e.g., `jszczypk/google-closure-compiler`).
-2. Go to [Packagist.org](https://packagist.org/) and log in.
-3. Click **Submit** in the top navigation bar.
-4. Paste the URL of your GitHub repository.
-5. Set up the GitHub integration in your Packagist account to enable auto-updating the package on push.
