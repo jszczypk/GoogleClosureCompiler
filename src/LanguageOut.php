@@ -37,7 +37,7 @@ enum LanguageOut: string
         }.'.js';
     }
 
-    public static function getByUserAgent(string $userAgent): self
+    public static function getByUserAgent(string $userAgent, self $default = self::ECMASCRIPT_2021): self
     {
         if (str_contains($userAgent, 'Trident/7.0; rv:11.0')) {
             return self::ECMASCRIPT5;
@@ -51,7 +51,20 @@ enum LanguageOut: string
         if (str_contains($userAgent, 'MSIE')) {
             return self::ECMASCRIPT3;
         }
+        if (
+            str_contains($userAgent, 'Version/11.1.2 Safari/605.1.15')
+            || str_contains($userAgent, 'Firefox/70.0')
+        ) {
+            return self::ECMASCRIPT5;
+        }
+        if (
+            str_contains($userAgent, 'Chrome/87.')
+            || str_contains($userAgent, 'Chrome/88.')
+            || str_contains($userAgent, 'Chrome/89.')
+        ) {
+            return self::ECMASCRIPT_2017;
+        }
 
-        return self::ECMASCRIPT_2015;
+        return $default;
     }
 }
